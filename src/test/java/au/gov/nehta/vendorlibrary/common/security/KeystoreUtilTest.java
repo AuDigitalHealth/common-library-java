@@ -17,134 +17,125 @@ import static au.gov.nehta.vendorlibrary.common.TestConstant.*;
 
 import au.gov.nehta.vendorlibrary.common.TestConstant;
 import org.junit.Test;
-import org.junit.experimental.theories.Theories;
 
 import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.Principal;
-import java.security.PrivateKey;
 import java.security.cert.CertificateParsingException;
 import java.security.cert.X509Certificate;
 import java.util.Collection;
-import java.util.Enumeration;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
 public class KeystoreUtilTest {
 
   @Test
-  public void testSubjectAltenativeNameForCertificates() throws Exception{
+  public void testSubjectAltenativeNameForCertificates() throws Exception {
 
-    X509Certificate x509Certificate = TestConstant.getSigningCertificate(TestConstant.MEDICARE_CURRENT_PRIVATE_KEY_ALIAS);
-    Collection altNames=null;
-    Collection issuerAltNames=null;
-    issuerAltNames= x509Certificate.getIssuerAlternativeNames();
+    X509Certificate x509Certificate = TestConstant
+        .getSigningCertificate(TestConstant.MEDICARE_CURRENT_PRIVATE_KEY_ALIAS);
+    Collection altNames = null;
+    Collection issuerAltNames = null;
+    issuerAltNames = x509Certificate.getIssuerAlternativeNames();
 
-    Principal princple = x509Certificate.getSubjectDN();
+    Principal princple = x509Certificate.getSubjectX500Principal();
     princple.getName();
 
-    System.out.println("The subject name is "+ princple.getName());
+    System.out.println("The subject name is " + princple.getName());
 
     String[] subjectContents = princple.getName().split(", ");
-    String subjectKey="CN=";
-    for(String uniqueId: subjectContents){
-      if(uniqueId.indexOf(subjectKey)>=0){
+    String subjectKey = "CN=";
+    for (String uniqueId : subjectContents) {
+      if (uniqueId.indexOf(subjectKey) >= 0) {
         System.out.println("the CN name is " + uniqueId.substring((uniqueId.lastIndexOf("=") + 1)));
       }
     }
 
-    altNames =  x509Certificate.getSubjectAlternativeNames();
-    //populate alternativeNames
-    if(altNames!= null){
-      Iterator itAltNames  = altNames.iterator();
-      while(itAltNames.hasNext()){
-        List extensionEntry = (List)itAltNames.next();
+    altNames = x509Certificate.getSubjectAlternativeNames();
+    // populate alternativeNames
+    if (altNames != null) {
+      Iterator itAltNames = altNames.iterator();
+      while (itAltNames.hasNext()) {
+        List extensionEntry = (List) itAltNames.next();
         Integer nameType = (Integer) extensionEntry.get(0);
         String name = (String) extensionEntry.get(1);
-        System.out.println("The name is "+ name);
+        System.out.println("The name is " + name);
       }
     }
 
-    if(issuerAltNames!= null){
-      Iterator issuerAltNamesItr  = issuerAltNames.iterator();
-      while(issuerAltNamesItr.hasNext()){
-        List extensionEntry = (List)issuerAltNamesItr.next();
+    if (issuerAltNames != null) {
+      Iterator issuerAltNamesItr = issuerAltNames.iterator();
+      while (issuerAltNamesItr.hasNext()) {
+        List extensionEntry = (List) issuerAltNamesItr.next();
         Integer nameType = (Integer) extensionEntry.get(0);
         String name = (String) extensionEntry.get(1);
-        System.out.println("The name is "+ name);
+        System.out.println("The name is " + name);
       }
     }
 
   }
-
 
   @Test
-  public void testSubjectAlternativeNameForMedicareNewCertificates() throws Exception{
+  public void testSubjectAlternativeNameForMedicareNewCertificates() throws Exception {
 
     X509Certificate x509Certificate = TestConstant.getSigningCertificate(TestConstant.MEDICARE_NEW_PRIVATE_KEY_ALIAS);
-    Collection altNames=null;
-    Collection issuerAltNames=null;
-    issuerAltNames= x509Certificate.getIssuerAlternativeNames();
+    Collection altNames = null;
+    Collection issuerAltNames = null;
+    issuerAltNames = x509Certificate.getIssuerAlternativeNames();
 
-    Principal princple = x509Certificate.getSubjectDN();
+    Principal princple = x509Certificate.getSubjectX500Principal();
     princple.getName();
 
-    System.out.println("The subject name is "+ princple.getName());
+    System.out.println("The subject name is " + princple.getName());
 
     String[] subjectContents = princple.getName().split(", ");
-    String subjectKey="CN=";
-    for(String uniqueId: subjectContents){
-      if(uniqueId.indexOf(subjectKey)>=0){
-        System.out.println("the CN name is "+uniqueId.substring((uniqueId.lastIndexOf("=")+1)));
+    String subjectKey = "CN=";
+    for (String uniqueId : subjectContents) {
+      if (uniqueId.indexOf(subjectKey) >= 0) {
+        System.out.println("the CN name is " + uniqueId.substring((uniqueId.lastIndexOf("=") + 1)));
       }
     }
 
-    altNames =  x509Certificate.getSubjectAlternativeNames();
-    //populate alternativeNames
-    if(altNames!= null){
-      Iterator itAltNames  = altNames.iterator();
-      while(itAltNames.hasNext()){
-        List extensionEntry = (List)itAltNames.next();
+    altNames = x509Certificate.getSubjectAlternativeNames();
+    // populate alternativeNames
+    if (altNames != null) {
+      Iterator itAltNames = altNames.iterator();
+      while (itAltNames.hasNext()) {
+        List extensionEntry = (List) itAltNames.next();
         Integer nameType = (Integer) extensionEntry.get(0);
         String name = (String) extensionEntry.get(1);
-        System.out.println("The name is "+ name);
+        System.out.println("The name is " + name);
       }
     }
 
-    if(issuerAltNames!= null){
-      Iterator issuerAltNamesItr  = issuerAltNames.iterator();
-      while(issuerAltNamesItr.hasNext()){
-        List extensionEntry = (List)issuerAltNamesItr.next();
+    if (issuerAltNames != null) {
+      Iterator issuerAltNamesItr = issuerAltNames.iterator();
+      while (issuerAltNamesItr.hasNext()) {
+        List extensionEntry = (List) issuerAltNamesItr.next();
         Integer nameType = (Integer) extensionEntry.get(0);
         String name = (String) extensionEntry.get(1);
-        System.out.println("The name is "+ name);
+        System.out.println("The name is " + name);
       }
     }
 
   }
-  //URN:NEHTA:HPI-O:8003622345681622
+  // URN:NEHTA:HPI-O:8003622345681622
 
-  private void  getKeystore(KeyStore keyStore, String saName) throws KeyStoreException, CertificateParsingException {
-    Enumeration<String> aliases = keyStore.aliases();
-
-    Collection altNames=null;
-
-    while(aliases.hasMoreElements())
-    {
-      String alias = aliases.nextElement();
+  private void getKeystore(KeyStore keyStore, String saName) throws KeyStoreException, CertificateParsingException {
+    for (String alias : Collections.list(keyStore.aliases())) {
       X509Certificate certificate = (X509Certificate) keyStore.getCertificate(alias);
 
-      altNames =  certificate.getSubjectAlternativeNames();
-      //populate alternativeNames
-      if(altNames!= null){
-        Iterator itAltNames  = altNames.iterator();
-        while(itAltNames.hasNext()){
-          List extensionEntry = (List)itAltNames.next();
+      Collection altNames = certificate.getSubjectAlternativeNames();
+      // populate alternativeNames
+      if (altNames != null) {
+        Iterator itAltNames = altNames.iterator();
+        while (itAltNames.hasNext()) {
+          List extensionEntry = (List) itAltNames.next();
           Integer nameType = (Integer) extensionEntry.get(0);
           String name = (String) extensionEntry.get(1);
-          if(name.equals(saName))
-          {
-            System.out.println("the name matched "+ name);
+          if (name.equals(saName)) {
+            System.out.println("the name matched " + name);
           }
 
         }
@@ -155,12 +146,11 @@ public class KeystoreUtilTest {
   }
 
   @Test
-  public void testGetCertificatesByAlternativeNames() throws Exception{
+  public void testGetCertificatesByAlternativeNames() throws Exception {
     KeyStore keyStore = KeystoreUtil.loadKeyStore(PRIVATE_KEY_STORE_TYPE, PRIVATE_KEY_STORE_PASSWORD,
-      PRIVATE_KEY_STORE_FILE);
+        PRIVATE_KEY_STORE_FILE);
     String subjectAlternateName = "URN:NEHTA:HPI-O:8003622345681622";
-    getKeystore(keyStore,subjectAlternateName);
+    getKeystore(keyStore, subjectAlternateName);
   }
-
 
 }
