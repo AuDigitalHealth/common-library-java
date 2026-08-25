@@ -17,9 +17,12 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeConstants;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.time.DateTimeException;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
@@ -63,18 +66,14 @@ public final class TimeUtility {
      */
     public static final int DATE_TIME_LENGTH = COMPACT_DATE_TIME_FORMAT.length();
 
+    private static final DateTimeFormatter FORMATTER_NOW = DateTimeFormatter.ofPattern(DATE_FORMAT_NOW);
 
-    /**
-     * Logger instance for event/error logging.
-     */
+    private static final DateTimeFormatter FORMATTER_DATE = DateTimeFormatter.ofPattern(DATE_FORMAT);
+
     private static final Logger LOGGER = Logger.getLogger(TimeUtility.class
             .getName());
 
-    /**
-     * Default private constructor for Utility class.
-     */
     private TimeUtility() {
-
     }
 
     /**
@@ -83,36 +82,24 @@ public final class TimeUtility {
      *
      * @param date as string in yyyyMMdd HH:mm:ss format
      * @return date as XMLGregorianCalendar instance. Returns null in an event
-     * of error. Invoking method must check for null.
+     *         of error. Invoking method must check for null.
      */
     public static XMLGregorianCalendar getXMLGregorianDateTime(
             final String date) {
         try {
             if (date.matches(DATE_FORMAT_NOW_REGX)) {
+                LocalDateTime dateTime = LocalDateTime.parse(date, FORMATTER_NOW);
                 XMLGregorianCalendar cal = DatatypeFactory.newInstance()
                         .newXMLGregorianCalendar(new GregorianCalendar());
-                SimpleDateFormat format = new SimpleDateFormat(DATE_FORMAT_NOW);
-                String pattern = format.toPattern();
-                Date simpleDate = format.parse(date);
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTime(simpleDate);
-
-                int year = calendar.get(Calendar.YEAR);
-                int month = calendar.get(Calendar.MONTH);
-                int day = calendar.get(Calendar.DAY_OF_MONTH);
-                int hour = calendar.get(Calendar.HOUR_OF_DAY);
-                int min = calendar.get(Calendar.MINUTE);
-                int second = calendar.get(Calendar.SECOND);
-
-                cal.setDay(day);
-                cal.setYear(year);
-                cal.setMonth(month);
-                cal.setHour(hour);
-                cal.setMinute(min);
-                cal.setSecond(second);
+                cal.setYear(dateTime.getYear());
+                cal.setMonth(dateTime.getMonthValue());
+                cal.setDay(dateTime.getDayOfMonth());
+                cal.setHour(dateTime.getHour());
+                cal.setMinute(dateTime.getMinute());
+                cal.setSecond(dateTime.getSecond());
                 return cal;
             }
-        } catch (DatatypeConfigurationException | ParseException ex) {
+        } catch (DatatypeConfigurationException | DateTimeException ex) {
             throw new IllegalArgumentException("Incorrect date format"
                     + date + ". Must be set in " + DATE_FORMAT + " format", ex);
         }
@@ -127,35 +114,21 @@ public final class TimeUtility {
      *
      * @param date in yyyymmdd format
      * @return XMLGregorianCalendar date. Return null in an event of error.
-     * Invoking method must check for null.
+     *         Invoking method must check for null.
      */
     public static XMLGregorianCalendar getXMLGregorianDate(final String date) {
         try {
-            XMLGregorianCalendar cal = DatatypeFactory.newInstance()
-                    .newXMLGregorianCalendar(new GregorianCalendar());
             if (date.matches(DATE_FORMAT_REGX)) {
-
-                SimpleDateFormat format = new SimpleDateFormat(DATE_FORMAT);
-                Calendar calendar = Calendar.getInstance();
-
-                Date simpleDate = format.parse(date);
-
-                calendar.setTime(simpleDate);
-
-                int year = calendar.get(Calendar.YEAR);
-                int month = calendar.get(Calendar.MONTH);
-                int day = calendar.get(Calendar.DAY_OF_MONTH);
-
-                cal.setDay(day);
-                cal.setYear(year);
-                //Month is zero based in Date and one based in Calendar
-                cal.setMonth(month + 1);
-
-                // Unset the timezone.
+                LocalDate localDate = LocalDate.parse(date, FORMATTER_DATE);
+                XMLGregorianCalendar cal = DatatypeFactory.newInstance()
+                        .newXMLGregorianCalendar(new GregorianCalendar());
+                cal.setYear(localDate.getYear());
+                cal.setMonth(localDate.getMonthValue());
+                cal.setDay(localDate.getDayOfMonth());
                 cal.setTimezone(DatatypeConstants.FIELD_UNDEFINED);
                 return cal;
             }
-        } catch (ParseException | DatatypeConfigurationException ex) {
+        } catch (DatatypeConfigurationException | DateTimeException ex) {
             throw new IllegalArgumentException("Incorrect date format"
                     + date + ". Must be set in " + DATE_FORMAT + " format", ex);
         }
@@ -169,10 +142,7 @@ public final class TimeUtility {
      * @return the current system time.
      */
     public static String now() {
-        Calendar cal = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_NOW);
-        return sdf.format(cal.getTime());
-
+        return LocalDateTime.now().format(FORMATTER_NOW);
     }
 
     /**
@@ -181,8 +151,7 @@ public final class TimeUtility {
      * @return current dateTime as {@link java.util.Date}
      */
     public static Date nowDate() {
-        Calendar cal = Calendar.getInstance();
-        return cal.getTime();
+        return Date.from(Instant.now());
     }
 
     /**
@@ -192,13 +161,13 @@ public final class TimeUtility {
      * @return the date in YYYYMMDD format.
      */
     public static String getDateAsYYYYMMDD(final Date date) {
-        String dateTime = null;
-        if (date != null) {
-            SimpleDateFormat dateformatYYYYMMDD = new SimpleDateFormat(
-                    TimeUtility.DATE_FORMAT);
-            dateTime = dateformatYYYYMMDD.format(date);
+        if (date == null) {
+            return null;
         }
-        return dateTime;
+        return Instant.ofEpochMilli(date.getTime())
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate()
+                .format(FORMATTER_DATE);
     }
 
     /**

@@ -1,41 +1,47 @@
-# How to contribute
+# Contributing
 
-Thanks for your interest in contributing to this project.
+**Audience:** developers building or changing **this repository**. Integrators should use **README.md** and Maven Central coordinates. See **SECURITY.md** before committing.
 
-You can find out a bit more about this project by reading the [README](README.md)
-file within this repository.
+## Prerequisites
 
-## Reporting issues
+- **JDK 24+** with **`JAVA_HOME`** set (see **`maven.compiler.release`** in **`pom.xml`**).
+- **Maven 3.6+** on **`PATH`**.
 
-Issues can be used to:
+Dependencies resolve from **[Maven Central](https://central.sonatype.com/)** unless you are installing a **local SNAPSHOT** (below). This POM has no sibling Maven modules.
 
-- Report a defect
-- Request a new feature or enhancement
-- Ask a question
+## Versioning
 
-New issues will be automatically populated with a template that highlights the
-information that needs to be submitted with an issue that describes a defect. If
-the issue is not related to a defect, please just delete the template and
-replace it with a detailed description of the problem you are trying to solve.
+The **first number** of **`au.gov.nehta:common-library`** is the **Java SE** version that this library targets. **24.0.0** targets Java **24** / **Jakarta**; **21.0.0** targets Java **21** / **Jakarta**; **17.0.0** targets Java **17** / **Jakarta**; **11.0.0** targets Java **11** / **Jakarta**; **8.0.0** uses **`javax`**. See **`README.md`**.
 
-## Creating a pull request
+## Build
 
-New pull requests within this project's repository are pre-populated with a
-checklist that describes the Definition of Done that we assess all new changes
-against. It is ok to submit a pull request that has not yet addressed all of
-these items, but be aware that the change will not be merged until it meets the
-Definition of Done.
+From the project root:
 
-Please communicate with us (preferably through creation of an issue) before
-embarking on any significant work within a pull request. This will prevent
-situations where people are working at cross-purposes.
+```text
+mvn -B "-Dgpg.skip=true" clean verify
+```
 
-## Code of conduct
+| Goal                                           | Command                                                    |
+| ---------------------------------------------- | ---------------------------------------------------------- |
+| Compile + attach sources/Javadoc               | `mvn -B "-Dgpg.skip=true" clean verify`                    |
+| Skip tests                                     | `mvn -B "-Dgpg.skip=true" clean verify "-DskipTests=true"` |
+| Install SNAPSHOT to the local Maven repository | `mvn -B "-Dgpg.skip=true" clean install`                   |
 
-Before making a contribution, please read the
-[code of conduct](CODE_OF_CONDUCT.md).
+GPG signing is skipped by default (**`-Dgpg.skip=true`**). Release builds: **`-Dgpg.skip=false`**.
 
-## Contact us
+## Dependencies
 
-You can alo raise a query about this code, by emailing:
-[help@digitalhealth.gov.au](mailto:help@digitalhealth.gov.au)
+- Runtime SOAP stack: **`com.sun.xml.ws:jaxws-rt` 4.0.5** (plus declared Jakarta bind / WS / SOAP APIs).
+- Siblings **`au.gov.nehta:smi-common-utils`** and **`au.gov.nehta:smi-xsp`** at **`${project.version}`**.
+- Test: **`junit`**.
+
+## Local builds (unpublished artifacts)
+
+**`mvn install`** makes the SNAPSHOT resolvable for any local consumer of **`au.gov.nehta:common-library`** at **`${project.version}`**. Integrators using GA versions from Maven Central do not need a source checkout.
+
+Maintainer notes: **MAINTAINERS.md**.
+
+## Repository hygiene
+
+- **Do not commit** keystores, production endpoint URLs, populated **`settings.xml`** with release credentials, or generated build artefacts. See **SECURITY.md**.
+- **Line endings:** the repository uses **LF** (see **`.gitattributes`** if present). On **Windows**, run **`git config core.autocrlf false`** in your clone before committing.
