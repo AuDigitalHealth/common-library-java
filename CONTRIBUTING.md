@@ -4,14 +4,14 @@
 
 ## Prerequisites
 
-- **JDK 11+** with **`JAVA_HOME`** set (see **`maven.compiler.release`** in **`pom.xml`**).
+- **JDK 17+** with **`JAVA_HOME`** set (see **`maven.compiler.release`** in **`pom.xml`**).
 - **Maven 3.6+** on **`PATH`**.
 
 Dependencies resolve from **[Maven Central](https://central.sonatype.com/)** unless you are installing a **local SNAPSHOT** (below). This POM has no sibling Maven modules.
 
 ## Versioning
 
-The **first number** of **`au.gov.nehta:common-library`** is the **Java SE** version that this library targets. **11.0.0** targets Java **11** / **Jakarta**; **8.0.0** uses **`javax`**. See **`README.md`**.
+The **first number** of **`au.gov.nehta:common-library`** is the **Java SE** version that this library targets. **17.0.0** targets Java **17** / **Jakarta**; **11.0.0** targets Java **11** / **Jakarta**; **8.0.0** uses **`javax`**. See **`README.md`**.
 
 ## Build
 
@@ -32,7 +32,7 @@ GPG signing is skipped by default (**`-Dgpg.skip=true`**). Release builds: **`-D
 ## Dependencies
 
 - Runtime SOAP stack: **`com.sun.xml.ws:jaxws-rt` 4.0.5** (plus declared Jakarta bind / WS / SOAP APIs).
-- Sibling **`au.gov.nehta:smi-xsp`** at the same Maven version (**`${project.version}`**).
+- Siblings **`au.gov.nehta:smi-common-utils`** and **`au.gov.nehta:smi-xsp`** at **`${project.version}`**.
 - Test: **`junit`**.
 
 ## Local builds (unpublished artifacts)

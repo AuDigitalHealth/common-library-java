@@ -1,10 +1,19 @@
 # Change Log/Revision History
 
+# = 17.0.0 =
+
+- Maven **`au.gov.nehta:common-library`** **17.0.0** (Java **17** / **Jakarta**).
+- POM: **`maven.compiler.release` 17**; Jakarta XML APIs, **`jaxws-rt` 4.0.5**.
+- Sibling **`smi-xsp`** and **`smi-common-utils`** at **`${project.version}`** (**17.0.0**).
+- Enforcer requires JDK **17+**; **`maven-enforcer-plugin` 3.6.3**.
+- No unused direct **`xmlsec`** / **`slf4j`** declarations (arrive via siblings / runtime as needed).
+- **`smi-common-utils`** supplies **`JaxbUtils`** after **`smi-xsp`** dropped its unused copy.
+
 # = 11.0.0 =
 
 - Maven **`au.gov.nehta:common-library`** **11.0.0** (Java **11** / **Jakarta**).
 - POM: Jakarta XML APIs, **`jaxws-rt` 4.0.5**; declare bind/ws/soap APIs used by sources.
-- **`smi-xsp`** at **`nehta.xsp.lib.version`** = **`${project.version}`** (**11.0.0**).
+- **`smi-xsp`** at **`${project.version}`** (**11.0.0**).
 - `TimeUtility` uses `java.time` (`DateTimeFormatter` / `LocalDateTime`) instead of `SimpleDateFormat`.
 - Drop unused test-only `xmlsec` / `slf4j` declarations (arrive via `smi-xsp` / runtime as needed).
 

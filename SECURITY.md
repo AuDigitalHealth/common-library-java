@@ -4,6 +4,14 @@
 
 Report security-sensitive findings through your organisation's usual channel for **ADHA / AuDigitalHealth** repositories (do not open a public issue with exploit details before it is triaged).
 
+## Supported versions
+
+| Version  | Supported |
+| -------- | --------- |
+| 17.0.0   | Yes       |
+| 11.0.0   | Yes       |
+| 8.0.0    | Yes       |
+
 ## This repository
 
 - **Do not commit secrets to git.** That includes passwords, API tokens, private keys, real mutual-TLS keystores, production or staging endpoint URLs with embedded credentials, and Services Australia / vendor registration material - even inside comments, test fixtures, or tracked documentation.

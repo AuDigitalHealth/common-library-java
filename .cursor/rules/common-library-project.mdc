@@ -17,7 +17,7 @@ The **first number** of **`au.gov.nehta:common-library`** is the **Java SE** tar
 | ------------ | ---- | ----------- |
 | **8.0.0**    | 8    | **javax**   |
 | **11.0.0**   | 11   | **Jakarta** |
-| **17.0.0.1** | 17   | **Jakarta** |
+| **17.0.0**   | 17   | **Jakarta** |
 | **21.0.0.1** | 21   | **Jakarta** |
 | **24.0.0.1** | 24   | **Jakarta** |
 
@@ -27,17 +27,17 @@ The **first number** of **`au.gov.nehta:common-library`** is the **Java SE** tar
 | ------------ | ------------------- |
 | **8.0.0**    | `java-8`            |
 | **11.0.0**   | `java-11`           |
-| **17.0.0.1** | `java-17`           |
+| **17.0.0**   | `java-17`           |
 | **21.0.0.1** | `java-21`           |
 | **24.0.0.1** | `java-24`           |
 
-## This 11.0.0 line
+## This 17.0.0 line
 
-**`11.0.0-SNAPSHOT`**: Java **11**, **Jakarta** XML APIs, **`jaxws-rt` 4.0.5**.
+**`17.0.0-SNAPSHOT`**: Java **17**, **Jakarta** XML APIs, **`jaxws-rt` 4.0.5**. Siblings **`smi-common-utils`** and **`smi-xsp`** at **`${project.version}`**.
 
 ## Build
 
-- JDK **11+**, from repo root: `mvn -B "-Dgpg.skip=true" clean verify` (quote `-D` on PowerShell).
+- JDK **17+**, from repo root: `mvn -B "-Dgpg.skip=true" clean verify` (quote `-D` on PowerShell).
 
 ## Doc split
 
