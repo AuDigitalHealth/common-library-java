@@ -18,8 +18,8 @@ import au.gov.nehta.common.utils.JaxbUtils;
 import org.w3c.dom.Document;
 
 import javax.xml.XMLConstants;
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.JAXBException;
+import jakarta.xml.bind.JAXBElement;
+import jakarta.xml.bind.JAXBException;
 import javax.xml.namespace.QName;
 import javax.xml.transform.TransformerException;
 import java.io.ByteArrayInputStream;
