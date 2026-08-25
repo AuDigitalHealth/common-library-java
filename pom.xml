@@ -9,7 +9,7 @@
 
     <groupId>au.gov.nehta</groupId>
     <artifactId>common-library</artifactId>
-    <version>21.0.0-SNAPSHOT</version>
+    <version>24.0.0-SNAPSHOT</version>
     <name>ADHA/NEHTA Common Library</name>
     <description>Java classes for common code used by other ADHA/NEHTA libraries</description>
     <url>https://github.com/AuDigitalHealth/common-library-java</url>
@@ -65,7 +65,7 @@
     </distributionManagement>
 
     <properties>
-        <maven.compiler.release>21</maven.compiler.release>
+        <maven.compiler.release>24</maven.compiler.release>
         <encoding>UTF-8</encoding>
         <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
@@ -84,7 +84,7 @@
         <release.pushChanges>true</release.pushChanges>
         <release.remoteTagging>true</release.remoteTagging>
         <release.scmCommentPrefix>[maven-release-plugin] </release.scmCommentPrefix>	
-        <!-- Eclipse EE4J JAX-WS RI: com.sun.xml.ws:jaxws-rt 4.0.x (Jakarta, Java 21). -->
+        <!-- Eclipse EE4J JAX-WS RI: com.sun.xml.ws:jaxws-rt 4.0.x (Jakarta, Java 24). -->
         <ee4j.jaxws.version>4.0.5</ee4j.jaxws.version>
         <jakarta.xml.bind.api.version>4.0.5</jakarta.xml.bind.api.version>
         <jakarta.xml.ws.api.version>4.0.3</jakarta.xml.ws.api.version>
@@ -176,7 +176,7 @@
                                     <version>[3.6.3,)</version>
                                 </requireMavenVersion>
                                 <requireJavaVersion>
-                                    <version>[21,)</version>
+                                    <version>[24,)</version>
                                 </requireJavaVersion>
                                 <bannedDependencies>
                                     <excludes>

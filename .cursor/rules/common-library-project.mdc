@@ -13,31 +13,31 @@ Follow **`documentation-standards.mdc`**. Integrator docs use **version numbers*
 
 The **first number** of **`au.gov.nehta:common-library`** is the **Java SE** target, aligned with the HI/MHR client release lines.
 
-| Version      | Java | XML stack   |
-| ------------ | ---- | ----------- |
-| **8.0.0**    | 8    | **javax**   |
-| **11.0.0**   | 11   | **Jakarta** |
-| **17.0.0**   | 17   | **Jakarta** |
-| **21.0.0**   | 21   | **Jakarta** |
-| **24.0.0.1** | 24   | **Jakarta** |
+| Version    | Java | XML stack   |
+| ---------- | ---- | ----------- |
+| **8.0.0**  | 8    | **javax**   |
+| **11.0.0** | 11   | **Jakarta** |
+| **17.0.0** | 17   | **Jakarta** |
+| **21.0.0** | 21   | **Jakarta** |
+| **24.0.0** | 24   | **Jakarta** |
 
 **Git branch mapping (maintainers only - never in integrator docs):**
 
-| Version      | Official Git branch |
-| ------------ | ------------------- |
-| **8.0.0**    | `java-8`            |
-| **11.0.0**   | `java-11`           |
-| **17.0.0**   | `java-17`           |
-| **21.0.0**   | `java-21`           |
-| **24.0.0.1** | `java-24`           |
+| Version    | Official Git branch |
+| ---------- | ------------------- |
+| **8.0.0**  | `java-8`            |
+| **11.0.0** | `java-11`           |
+| **17.0.0** | `java-17`           |
+| **21.0.0** | `java-21`           |
+| **24.0.0** | `java-24`           |
 
-## This 21.0.0 line
+## This 24.0.0 line
 
-**`21.0.0-SNAPSHOT`**: Java **21**, **Jakarta** XML APIs, **`jaxws-rt` 4.0.5**. Siblings **`smi-common-utils`** and **`smi-xsp`** at **`${project.version}`**.
+**`24.0.0-SNAPSHOT`**: Java **24**, **Jakarta** XML APIs, **`jaxws-rt` 4.0.5**. Siblings **`smi-common-utils`** and **`smi-xsp`** at **`${project.version}`**.
 
 ## Build
 
-- JDK **21+**, from repo root: `mvn -B "-Dgpg.skip=true" clean verify` (quote `-D` on PowerShell).
+- JDK **24+**, from repo root: `mvn -B "-Dgpg.skip=true" clean verify` (quote `-D` on PowerShell).
 
 ## Doc split
 

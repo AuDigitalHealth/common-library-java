@@ -8,6 +8,7 @@ Report security-sensitive findings through your organisation's usual channel for
 
 | Version  | Supported |
 | -------- | --------- |
+| 24.0.0   | Yes       |
 | 21.0.0   | Yes       |
 | 17.0.0   | Yes       |
 | 11.0.0   | Yes       |

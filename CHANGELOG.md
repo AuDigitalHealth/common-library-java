@@ -1,5 +1,13 @@
 # Change Log/Revision History
 
+# = 24.0.0 =
+
+- Maven **`au.gov.nehta:common-library`** **24.0.0** (Java **24** / **Jakarta**).
+- POM: **`maven.compiler.release` 24**; Jakarta XML APIs, **`jaxws-rt` 4.0.5**.
+- Sibling **`smi-xsp`** and **`smi-common-utils`** at **`${project.version}`** (**24.0.0**).
+- Enforcer requires JDK **24+**; **`maven-enforcer-plugin` 3.6.3**.
+- Same utility surface as **21.0.0** on Java **24** bytecode.
+
 # = 21.0.0 =
 
 - Maven **`au.gov.nehta:common-library`** **21.0.0** (Java **21** / **Jakarta**).

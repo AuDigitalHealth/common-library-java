@@ -10,11 +10,11 @@ Published releases are consumed from **[Maven Central](https://central.sonatype.
 <dependency>
   <groupId>au.gov.nehta</groupId>
   <artifactId>common-library</artifactId>
-  <version>21.0.0</version>
+  <version>24.0.0</version>
 </dependency>
 ```
 
-**This line (`21.0.0`):** Java **21**, **Jakarta** XML APIs via **`jaxws-rt` 4.0.5**.
+**This line (`24.0.0`):** Java **24**, **Jakarta** XML APIs via **`jaxws-rt` 4.0.5**.
 
 ---
 
@@ -28,7 +28,7 @@ The **first number** of the Maven version is the **Java SE** version that this l
 | **11.0.0** | **11** | **Jakarta** / EE4J **`jaxws-rt` 4.0.x** at runtime in consumers |
 | **17.0.0** | **17** | **Jakarta** / EE4J **`jaxws-rt` 4.0.x** at runtime in consumers |
 | **21.0.0** | **21** | **Jakarta** / EE4J **`jaxws-rt` 4.0.x** at runtime in consumers |
-| **24.0.0.1** | **24** | **Jakarta** / EE4J **`jaxws-rt` 4.0.x** at runtime in consumers |
+| **24.0.0** | **24** | **Jakarta** / EE4J **`jaxws-rt` 4.0.x** at runtime in consumers |
 
 Pick the coordinate that matches your JDK. All published versions are on **[Maven Central](https://central.sonatype.com/)**.
 
@@ -36,7 +36,7 @@ Pick the coordinate that matches your JDK. All published versions are on **[Mave
 
 ## Local development (SNAPSHOT)
 
-This repository builds **`21.0.0-SNAPSHOT`**. To make an unpublished JAR resolvable for other local projects:
+This repository builds **`24.0.0-SNAPSHOT`**. To make an unpublished JAR resolvable for other local projects:
 
 ```text
 mvn -B "-Dgpg.skip=true" clean install
@@ -48,7 +48,7 @@ If Maven warns that a **GA** POM is missing, clear stale **`au/gov/nehta/common-
 
 **Audience:** contributors changing this repository - not integrators adding a Maven dependency.
 
-Prerequisites: **JDK 21+**, **Maven 3.6+**.
+Prerequisites: **JDK 24+**, **Maven 3.6+**.
 
 ```text
 mvn -B "-Dgpg.skip=true" clean verify
