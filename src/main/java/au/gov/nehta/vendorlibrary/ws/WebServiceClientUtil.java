@@ -15,11 +15,11 @@ package au.gov.nehta.vendorlibrary.ws;
 
 import javax.net.SocketFactory;
 import javax.xml.namespace.QName;
-import javax.xml.ws.BindingProvider;
-import javax.xml.ws.Service;
-import javax.xml.ws.WebServiceClient;
-import javax.xml.ws.handler.Handler;
-import javax.xml.ws.soap.AddressingFeature;
+import jakarta.xml.ws.BindingProvider;
+import jakarta.xml.ws.Service;
+import jakarta.xml.ws.WebServiceClient;
+import jakarta.xml.ws.handler.Handler;
+import jakarta.xml.ws.soap.AddressingFeature;
 import java.net.URL;
 import java.util.List;
 import java.util.Map;

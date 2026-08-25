@@ -17,7 +17,9 @@ import org.junit.Test;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
-import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import static org.junit.Assert.*;
@@ -61,6 +63,12 @@ public class TimeUtilityTest {
     XMLGregorianCalendar calendar = TimeUtility.getXMLGregorianDateTime(date);
     assertNotNull(calendar);
     assertTrue(calendar.isValid());
+    assertEquals(2007, calendar.getYear());
+    assertEquals(8, calendar.getMonth());
+    assertEquals(4, calendar.getDay());
+    assertEquals(18, calendar.getHour());
+    assertEquals(1, calendar.getMinute());
+    assertEquals(1, calendar.getSecond());
   }
 
 
@@ -87,8 +95,10 @@ public class TimeUtilityTest {
   @Test
   public void testGetDateAsYYYYMMDD() throws Exception {
     Date date = new Date();
-    SimpleDateFormat dateformatYYYYMMDD = new SimpleDateFormat(TimeUtility.DATE_FORMAT);
-    String expectedDate = new String( dateformatYYYYMMDD.format( date ) );
+    String expectedDate = Instant.ofEpochMilli(date.getTime())
+        .atZone(ZoneId.systemDefault())
+        .toLocalDate()
+        .format(DateTimeFormatter.ofPattern(TimeUtility.DATE_FORMAT));
     String actualDate = TimeUtility.getDateAsYYYYMMDD(date);
     assertNotNull(actualDate);
     assertEquals(expectedDate, actualDate);
