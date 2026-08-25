@@ -20,24 +20,24 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Locks this artifact on the Java 17 / 17.0.0 release line.
+ * Locks this artifact on the Java 21 / 21.0.0 release line.
  */
 public class ReleaseLineTest {
 
     @Test
-    public void runtimeFeatureIsAtLeast17() {
-        assertTrue(Runtime.version().feature() >= 17);
+    public void runtimeFeatureIsAtLeast21() {
+        assertTrue(Runtime.version().feature() >= 21);
     }
 
     @Test
-    public void mavenCompilerReleaseIs17() {
-        assertEquals("17", System.getProperty("common.library.compiler.release"));
+    public void mavenCompilerReleaseIs21() {
+        assertEquals("21", System.getProperty("common.library.compiler.release"));
     }
 
     @Test
-    public void projectVersionStartsWith17() {
+    public void projectVersionStartsWith21() {
         String version = System.getProperty("common.library.project.version");
         assertNotNull(version);
-        assertTrue(version.startsWith("17."));
+        assertTrue(version.startsWith("21."));
     }
 }

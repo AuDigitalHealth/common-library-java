@@ -18,7 +18,7 @@ The **first number** of **`au.gov.nehta:common-library`** is the **Java SE** tar
 | **8.0.0**    | 8    | **javax**   |
 | **11.0.0**   | 11   | **Jakarta** |
 | **17.0.0**   | 17   | **Jakarta** |
-| **21.0.0.1** | 21   | **Jakarta** |
+| **21.0.0**   | 21   | **Jakarta** |
 | **24.0.0.1** | 24   | **Jakarta** |
 
 **Git branch mapping (maintainers only - never in integrator docs):**
@@ -28,16 +28,16 @@ The **first number** of **`au.gov.nehta:common-library`** is the **Java SE** tar
 | **8.0.0**    | `java-8`            |
 | **11.0.0**   | `java-11`           |
 | **17.0.0**   | `java-17`           |
-| **21.0.0.1** | `java-21`           |
+| **21.0.0**   | `java-21`           |
 | **24.0.0.1** | `java-24`           |
 
-## This 17.0.0 line
+## This 21.0.0 line
 
-**`17.0.0-SNAPSHOT`**: Java **17**, **Jakarta** XML APIs, **`jaxws-rt` 4.0.5**. Siblings **`smi-common-utils`** and **`smi-xsp`** at **`${project.version}`**.
+**`21.0.0-SNAPSHOT`**: Java **21**, **Jakarta** XML APIs, **`jaxws-rt` 4.0.5**. Siblings **`smi-common-utils`** and **`smi-xsp`** at **`${project.version}`**.
 
 ## Build
 
-- JDK **17+**, from repo root: `mvn -B "-Dgpg.skip=true" clean verify` (quote `-D` on PowerShell).
+- JDK **21+**, from repo root: `mvn -B "-Dgpg.skip=true" clean verify` (quote `-D` on PowerShell).
 
 ## Doc split
 

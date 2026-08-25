@@ -4,14 +4,14 @@
 
 ## Prerequisites
 
-- **JDK 17+** with **`JAVA_HOME`** set (see **`maven.compiler.release`** in **`pom.xml`**).
+- **JDK 21+** with **`JAVA_HOME`** set (see **`maven.compiler.release`** in **`pom.xml`**).
 - **Maven 3.6+** on **`PATH`**.
 
 Dependencies resolve from **[Maven Central](https://central.sonatype.com/)** unless you are installing a **local SNAPSHOT** (below). This POM has no sibling Maven modules.
 
 ## Versioning
 
-The **first number** of **`au.gov.nehta:common-library`** is the **Java SE** version that this library targets. **17.0.0** targets Java **17** / **Jakarta**; **11.0.0** targets Java **11** / **Jakarta**; **8.0.0** uses **`javax`**. See **`README.md`**.
+The **first number** of **`au.gov.nehta:common-library`** is the **Java SE** version that this library targets. **21.0.0** targets Java **21** / **Jakarta**; **17.0.0** targets Java **17** / **Jakarta**; **11.0.0** targets Java **11** / **Jakarta**; **8.0.0** uses **`javax`**. See **`README.md`**.
 
 ## Build
 

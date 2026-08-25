@@ -13,7 +13,7 @@ The **first number** of **`<version>`** is the **Java SE** target of **this** li
 | **8.0.0**     | **8**   |
 | **11.0.0**    | **11**  |
 | **17.0.0**    | **17**  |
-| **21.0.0.1**  | **21**  |
+| **21.0.0**    | **21**  |
 | **24.0.0.1**  | **24**  |
 
 **Documentation convention:** README, CONTRIBUTING, CHANGELOG, and integrator-facing text use **version numbers only** - never Git branch names.
@@ -23,7 +23,7 @@ The **first number** of **`<version>`** is the **Java SE** target of **this** li
 | **8.0.0**    | 8    | **`javax.xml.ws`**, **`javax.xml.bind`** (via `jaxws-rt` 2.3.7) |
 | **11.0.0**   | 11   | **Jakarta** XML WS / Bind                                       |
 | **17.0.0**   | 17   | **Jakarta** XML WS / Bind                                       |
-| **21.0.0.1** | 21   | **Jakarta** XML WS / Bind                                       |
+| **21.0.0**   | 21   | **Jakarta** XML WS / Bind                                       |
 | **24.0.0.1** | 24   | **Jakarta** XML WS / Bind                                       |
 
 **Git branch mapping (maintainers / checkout only - do not use in integrator docs):**
@@ -33,14 +33,14 @@ The **first number** of **`<version>`** is the **Java SE** target of **this** li
 | **8.0.0**    | `java-8`            |
 | **11.0.0**   | `java-11`           |
 | **17.0.0**   | `java-17`           |
-| **21.0.0.1** | `java-21`           |
+| **21.0.0**   | `java-21`           |
 | **24.0.0.1** | `java-24`           |
 
 Artifact id stays **`common-library`**; the version distinguishes the Java SE line.
 
-On a given branch, **do not change the first number** of **`<version>`**. Next GA on **`java-17`** is **`17.0.0.1`** (then **`17.0.1-SNAPSHOT`**), not a different first number. A new Java SE target is a **new branch**, not a bump on this one.
+On a given branch, **do not change the first number** of **`<version>`**. Next GA on **`java-21`** is **`21.0.0.1`** (then **`21.0.1-SNAPSHOT`**), not a different first number. A new Java SE target is a **new branch**, not a bump on this one.
 
-**This checkout (`17.0.0-SNAPSHOT`):** Java **17**, **Jakarta** XML APIs, **`jaxws-rt` 4.0.5**.
+**This checkout (`21.0.0-SNAPSHOT`):** Java **21**, **Jakarta** XML APIs, **`jaxws-rt` 4.0.5**.
 
 ## Artifact
 
@@ -61,10 +61,10 @@ Publishing uses **`central-publishing-maven-plugin`** (Sonatype Central Portal).
 | **`java-8`**  | 8 / javax    | **8.0.0**        |
 | **`java-11`** | 11 / Jakarta | **11.0.0**       |
 | **`java-17`** | 17 / Jakarta | **17.0.0**       |
-| **`java-21`** | 21 / Jakarta | **21.0.0.1**     |
+| **`java-21`** | 21 / Jakarta | **21.0.0**       |
 | **`java-24`** | 24 / Jakarta | **24.0.0.1**     |
 
-**`-DdevelopmentVersion`:** keep the same first number as **`-DreleaseVersion`** (example on this line: **`17.0.0`** then **`17.0.1-SNAPSHOT`**).
+**`-DdevelopmentVersion`:** keep the same first number as **`-DreleaseVersion`** (example on this line: **`21.0.0`** then **`21.0.1-SNAPSHOT`**).
 
 ### SNAPSHOT or manual GA
 
@@ -72,14 +72,14 @@ Publishing uses **`central-publishing-maven-plugin`** (Sonatype Central Portal).
 2. **`mvn -B "-Prelease" clean verify`**
 3. **`mvn -B "-Prelease" deploy`**
 
-Tags default to **`{artifactId}-{version}`** (e.g. **`common-library-17.0.0`**).
+Tags default to **`{artifactId}-{version}`** (e.g. **`common-library-21.0.0`**).
 
 ### Automated GA (`maven-release-plugin`)
 
 Run on the **target branch** with a **clean** working tree.
 
 ```text
-mvn -B "-Prelease" release:prepare release:perform -DreleaseVersion=17.0.0 -DdevelopmentVersion=17.0.1-SNAPSHOT -Dtag=common-library-17.0.0
+mvn -B "-Prelease" release:prepare release:perform -DreleaseVersion=21.0.0 -DdevelopmentVersion=21.0.1-SNAPSHOT -Dtag=common-library-21.0.0
 ```
 
 **After success:** confirm **`common-library`** GA on Central before cutting downstream GAs.
@@ -92,9 +92,9 @@ mvn -B "-Prelease" release:prepare release:perform -DreleaseVersion=17.0.0 -Ddev
 
 When adding a line (e.g. Java **25**): create **`java-25`** in **this** repository from the nearest existing line; set **`<version>`** first number to **25** (e.g. **`25.0.0.1-SNAPSHOT`**); set **`maven.compiler.release`**, Jakarta coordinates, CI **`java-version`** / branch filter, and docs to that line. Do not retarget an existing branch.
 
-## Build (`17.0.0` line)
+## Build (`21.0.0` line)
 
-- **`maven.compiler.release` 17**
+- **`maven.compiler.release` 21**
 - Runtime SOAP stack: **`com.sun.xml.ws:jaxws-rt` 4.0.5** in **consuming** applications
 - Sibling **`au.gov.nehta:smi-common-utils`** and **`au.gov.nehta:smi-xsp`**: **`${project.version}`**
 - **`maven-gpg-plugin`:** skipped unless **`-Dgpg.skip=false`**
