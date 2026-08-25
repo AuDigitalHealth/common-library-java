@@ -1,65 +1,87 @@
 # Common Library
-This is a Java software library that supports producing, validating and extracting clinical packages as documented in the "CDA Package" specification.
 
-Setup
-=====
--   To build and test the distributable package, an appropriate Java IDE or
-    build environment must be installed.
+Maven artifact **`au.gov.nehta:common-library`** - shared Java utility classes for CDA package operations, argument validation, and web-service helpers used by other ADHA/NEHTA libraries.
 
--   Java source files can be found in:
-    common-library-java-<version>-sources.jar
+## Dependency
 
--   For detailed API documentation, refer to the included Javadoc package.
+Published releases are consumed from **[Maven Central](https://central.sonatype.com/)**. Use a **`<version>`** that matches your JDK (see **Versioning**).
 
-Solution
-=====
+```xml
+<dependency>
+  <groupId>au.gov.nehta</groupId>
+  <artifactId>common-library</artifactId>
+  <version>8.0.0</version>
+</dependency>
+```
 
-The package consists of these components:
+**This line (`8.0.0`):** Java **8**, **`javax.xml.ws`** / **`javax.xml.bind`** via **`jaxws-rt` 2.3.7**.
 
-    -   /common-library-java-<version>.jar
-        Contains the required classes for package operations.
+---
 
-    -   /common-library-java-<version>-docs.jar
-        Contains Javadoc documentation.
+## Versioning
 
-    -   /common-library-java-<version>-sources.jar
-        Contains library source files.
+The **first number** of the Maven version is the **Java SE** version that this library targets.
 
-Pre-Requisites
-=====
+| Maven version | Java SE | XML stack |
+| ------------- | ------- | --------- |
+| **8.0.0** | **8** | **`javax.*`** / EE4J **`jaxws-rt` 2.3.x** at runtime in consumers |
+| **11.0.0.1** | **11** | **Jakarta** / EE4J **`jaxws-rt` 4.0.x** at runtime in consumers |
+| **17.0.0.1** | **17** | **Jakarta** / EE4J **`jaxws-rt` 4.0.x** at runtime in consumers |
+| **21.0.0.1** | **21** | **Jakarta** / EE4J **`jaxws-rt` 4.0.x** at runtime in consumers |
+| **24.0.0.1** | **24** | **Jakarta** / EE4J **`jaxws-rt` 4.0.x** at runtime in consumers |
 
-Java Development Kit (JDK)
------
-Follow the usual instructions for installing a JDK, or the instructions below.
+Pick the coordinate that matches your JDK. All published versions are on **[Maven Central](https://central.sonatype.com/)**.
 
-    1.  Download and install JDK 8 Update 271 or later:
+---
 
-        URL: https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
+## Local development (SNAPSHOT)
 
-    2.  Unpack the JDK distribution into a directory of your choice.
+This repository builds **`8.0.0-SNAPSHOT`**. Compile depends on **`au.gov.nehta:smi-xsp`** at **`${project.version}`** (**8.0.0** / **`8.0.0-SNAPSHOT`**). Install unpublished **`smi-xsp`** first when that coordinate is not on Central, then install this library:
 
-        This directory will be your <JDK_HOME>and will be used in this document
-        to refer to the root directory of the JDK installation.
+```text
+# smi-xsp-java (same Maven version as this pom.xml)
+mvn -B "-Dgpg.skip=true" clean install
 
-        <JRE_HOME> will be used in this document to refer to <JDK_HOME>/jre.
+# common-library-java
+mvn -B "-Dgpg.skip=true" clean install
+```
 
-    3.  Create a JAVA_HOME environment variable pointing to the <JDK_HOME>
-        directory in Step 2.
+If Maven warns that a **GA** POM is missing, clear stale **`au/gov/nehta/common-library`** or **`au/gov/nehta/smi-xsp`** entries in your local Maven repository (folders with only **`.lastUpdated`** files) and reinstall the SNAPSHOT.
 
-    4.  Add <JDK_HOME>/bin to the system path.
+## Building from source
 
-Licensing
-=====
-Copyright 2012 NEHTA
+**Audience:** contributors changing this repository - not integrators adding a Maven dependency.
 
-Copyright 2021 ADHA
+Prerequisites: **JDK 8+**, **Maven 3.6+**.
 
-Licensed under the NEHTA/ADHA Open Source (Apache) License; you may not use this
-file except in compliance with the License. A copy of the License is in the
-'LICENSE.txt' file, which should be provided with this work.
+```text
+mvn -B "-Dgpg.skip=true" clean verify
+```
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
-WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
-License for the specific language governing permissions and limitations
-under the License.
+See **`CONTRIBUTING.md`** for **`mvn install`** when testing unpublished snapshots locally.
+
+## Related repositories
+
+| Repository | Role |
+| ---------- | ---- |
+| [hi-b2b-client-java](https://github.com/AuDigitalHealth/hi-b2b-client-java) | HI facade clients (depends on this artifact) |
+| [mhr-b2b-client-java](https://github.com/AuDigitalHealth/mhr-b2b-client-java) | MHR facades (depends on this artifact) |
+
+## Documentation
+
+| Document | Audience |
+| -------- | -------- |
+| **README.md** (this file) | Integrators |
+| **CONTRIBUTING.md** | Contributors |
+| **MAINTAINERS.md** | Releases and tooling |
+| **SECURITY.md** | Secrets and credentials |
+| **CHANGELOG.md** | Release history |
+| **LICENSE.txt** | Apache License 2.0 + ADHA terms |
+
+## License
+
+Apache License 2.0. See **LICENSE.txt**.
+
+## Copyright
+
+Copyright 2012 NEHTA. Copyright 2021-2026 ADHA. Apache License 2.0 - see **LICENSE.txt**.
