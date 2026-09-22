@@ -98,7 +98,8 @@
         <plugin.build.helper.version>3.6.1</plugin.build.helper.version>
         <plugin.gpg.version>3.2.8</plugin.gpg.version>
         <jacoco.version>0.8.14</jacoco.version>
-        <nehta.xsp.lib.version>1.2.1</nehta.xsp.lib.version>
+        <!-- Same Maven version as this artifact and sibling au.gov.nehta:smi-xsp (first number = Java SE). -->
+        <nehta.xsp.lib.version>${project.version}</nehta.xsp.lib.version>
         <maven.shade.plugin.version>3.6.2</maven.shade.plugin.version>
         <!-- Same version as this artifact (SNAPSHOT during dev; GA at release). See README local development. -->
         <hi.wsdl.version>${project.version}</hi.wsdl.version>

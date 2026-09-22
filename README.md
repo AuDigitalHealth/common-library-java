@@ -36,13 +36,17 @@ Pick the coordinate that matches your JDK. All published versions are on **[Mave
 
 ## Local development (SNAPSHOT)
 
-This repository builds **`8.0.0-SNAPSHOT`**. To make an unpublished JAR resolvable for other local projects:
+This repository builds **`8.0.0-SNAPSHOT`**. Compile depends on **`au.gov.nehta:smi-xsp`** at **`${project.version}`** (**8.0.0** / **`8.0.0-SNAPSHOT`**). Install unpublished **`smi-xsp`** first when that coordinate is not on Central, then install this library:
 
 ```text
+# smi-xsp-java (same Maven version as this pom.xml)
+mvn -B "-Dgpg.skip=true" clean install
+
+# common-library-java
 mvn -B "-Dgpg.skip=true" clean install
 ```
 
-If Maven warns that a **GA** POM is missing, clear stale **`au/gov/nehta/common-library`** entries in your local Maven repository (folders with only **`.lastUpdated`** files) and reinstall the SNAPSHOT.
+If Maven warns that a **GA** POM is missing, clear stale **`au/gov/nehta/common-library`** or **`au/gov/nehta/smi-xsp`** entries in your local Maven repository (folders with only **`.lastUpdated`** files) and reinstall the SNAPSHOT.
 
 ## Building from source
 

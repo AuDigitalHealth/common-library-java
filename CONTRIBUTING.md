@@ -31,10 +31,20 @@ GPG signing is skipped by default (**`-Dgpg.skip=true`**). Release builds: **`-D
 
 ## Dependencies
 
-- Compile: **`com.sun.xml.ws:jaxws-rt`** **2.3.7**, **`au.gov.nehta:smi-xsp`**.
+- Compile: **`com.sun.xml.ws:jaxws-rt`** **2.3.7**, **`au.gov.nehta:smi-xsp`** at **`${project.version}`** (**8.0.0** / **`8.0.0-SNAPSHOT`**).
 - Test: **`junit`**, **`org.apache.santuario:xmlsec`**, **`org.slf4j:slf4j-api`** / **`slf4j-simple`**.
 
 ## Local builds (unpublished artifacts)
+
+Install matching **`smi-xsp`** first (same Java line: **`8.0.0-SNAPSHOT`**), then this library:
+
+```text
+# in smi-xsp-java
+mvn -B "-Dgpg.skip=true" clean install
+
+# in common-library-java
+mvn -B "-Dgpg.skip=true" clean install
+```
 
 **`mvn install`** makes the SNAPSHOT resolvable for any local consumer of **`au.gov.nehta:common-library`** at **`${project.version}`**. Integrators using GA versions from Maven Central do not need a source checkout.
 

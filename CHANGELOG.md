@@ -3,6 +3,7 @@
 = 8.0.0 =
 =======
 - Maven **`au.gov.nehta:common-library`** **8.0.0** (Java **8** / **`javax`**). The first number of the Maven version is the targeted Java SE version.
+- Compile dependency **`au.gov.nehta:smi-xsp`** at **`${project.version}`** (**8.0.0**).
 - POM: Eclipse EE4J stack alignment - **`jaxws-rt` 2.3.7**; **`maven-enforcer-plugin`** bans legacy Metro **`webservices-*`** bundles.
 - Build plugins and dependency versions updated to latest Java **8**-compatible releases.
 - Version aligned with the HI/MHR client release lines (`8.0.0`).
